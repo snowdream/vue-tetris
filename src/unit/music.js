@@ -1,4 +1,6 @@
-import store from '../vuex/store'
+import bgmusic from '../assets/music.mp3';
+import store from '../vuex/store';
+
 // 使用 Web Audio API
 const AudioContext =
   window.AudioContext ||
@@ -11,12 +13,12 @@ export const hasWebAudioAPI = {
   data: !!AudioContext && location.protocol.indexOf('http') !== -1
 }
 
-export const music = {}
-;(() => {
+export const music = {};
+(() => {
   if (!hasWebAudioAPI.data) {
     return
   }
-  const url = './static/music.mp3'
+  const url = bgmusic
   const context = new AudioContext()
   const req = new XMLHttpRequest()
   req.open('GET', url, true)
